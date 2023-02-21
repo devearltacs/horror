@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
     }
 
     IEnumerator repeat() {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         if(isDoorUsed) isDoorUsed = false;
     }
 
