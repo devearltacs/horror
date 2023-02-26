@@ -4,18 +4,43 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public GameObject door_closed, door_opened, intText, lockText;
-    public AudioSource open, close;
-    public bool opened, locked;
+    public GameObject door_closed,
+        door_opened,
+        intText,
+        lockText;
+    public AudioSource open,
+        close;
+    public bool opened,
+        locked;
     public static bool key_held;
 
-    private bool isAtDoor, isDoorUsed;
+    private bool isAtDoor,
+        isDoorUsed;
+
+    public void OpenDoor()
+    {
+        opened = true;
+        door_closed.SetActive(false);
+        door_opened.SetActive(true);
+        intText.SetActive(false);
+        isAtDoor = false;
+    }
+
+    public void CloseDoor()
+    {
+        opened = false;
+        door_closed.SetActive(true);
+        door_opened.SetActive(false);
+        intText.SetActive(false);
+        isAtDoor = false;
+    }
 
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("MainCamera"))
         {
-            isAtDoor = true;
+            if (isAtDoor == false)
+                isAtDoor = true;
         }
     }
 
@@ -31,15 +56,16 @@ public class Door : MonoBehaviour
             {
                 lockText.SetActive(false);
             }
-            isAtDoor = false;
-            // close.play();
+            if (isAtDoor == true)
+                isAtDoor = false;
         }
     }
 
     IEnumerator repeat()
     {
         yield return new WaitForSeconds(0.5f);
-        if (isDoorUsed) isDoorUsed = false;
+        if (isDoorUsed)
+            isDoorUsed = false;
     }
 
     private void InteractDoors()
@@ -50,20 +76,12 @@ public class Door : MonoBehaviour
             {
                 if (!opened)
                 {
-                    opened = true;
-                    door_closed.SetActive(false);
-                    door_opened.SetActive(true);
-                    intText.SetActive(false);
-                    isAtDoor = false;
+                    OpenDoor();
                     // open.play();
                 }
                 else
                 {
-                    opened = false;
-                    door_closed.SetActive(true);
-                    door_opened.SetActive(false);
-                    intText.SetActive(false);
-                    isAtDoor = false;
+                    CloseDoor();
                     // close.play();
                 }
                 isDoorUsed = true;
@@ -78,18 +96,21 @@ public class Door : MonoBehaviour
         {
             if (locked == false)
             {
-                if (intText.activeSelf == false) intText.SetActive(true);
+                if (intText.activeSelf == false)
+                    intText.SetActive(true);
                 InteractDoors();
             }
             if (locked == true)
             {
                 if (key_held == false)
                 {
-                    if (lockText.activeSelf == false) lockText.SetActive(true);
+                    if (lockText.activeSelf == false)
+                        lockText.SetActive(true);
                 }
                 else
                 {
-                    if (intText.activeSelf == false) intText.SetActive(true);
+                    if (intText.activeSelf == false)
+                        intText.SetActive(true);
                     InteractDoors();
                 }
             }

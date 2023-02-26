@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    public GameObject int_icon, key;
+    public GameObject int_icon, key, kitchenlight;
+    public GameObject outsidelight, entrance_door, hurt_text;
+    public GameObject monster;
 
     private bool key_near;
 
@@ -20,6 +22,7 @@ public class Key : MonoBehaviour
     {
         if (other.CompareTag("MainCamera"))
         {
+            int_icon.SetActive(false);
             key_near = false;
         }
     }
@@ -31,6 +34,10 @@ public class Key : MonoBehaviour
             if (int_icon.activeSelf == false) int_icon.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
+                kitchenlight.GetComponent<Light>().enabled = false;
+                outsidelight.GetComponent<Light>().enabled = false;
+                hurt_text.SetActive(true);
+                monster.SetActive(true);
                 key.SetActive(false);
                 Door.key_held = true;
                 int_icon.SetActive(false);

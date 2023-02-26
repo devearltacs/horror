@@ -347,9 +347,18 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Assets/Scripts/Door.cs"
+"Assets/Assets/Scripts/ExitGame.cs"
 "Assets/Assets/Scripts/Flashlight.cs"
 "Assets/Assets/Scripts/Key.cs"
+"Assets/Assets/Scripts/KillTrigger.cs"
+"Assets/Assets/Scripts/MonsterBehavior.cs"
+"Assets/Assets/Scripts/OpenMainMenu.cs"
+"Assets/Assets/Scripts/OpenSettings.cs"
+"Assets/Assets/Scripts/PlayButton.cs"
 "Assets/Assets/Scripts/SC_FPSController.cs"
+"Assets/Assets/Scripts/ShowMouse.cs"
+"Assets/Assets/Scripts/ToggleFlashlight.cs"
+"Assets/Assets/Scripts/ToggleGetOut.cs"
 -langversion:9.0
 
 /deterministic
