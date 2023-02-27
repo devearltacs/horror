@@ -7,6 +7,7 @@ public class Key : MonoBehaviour
     public GameObject int_icon, key, kitchenlight;
     public GameObject outsidelight, entrance_door, hurt_text;
     public GameObject monster;
+    public AudioSource ambience_player, monster_roar;
 
     private bool key_near;
 
@@ -41,6 +42,8 @@ public class Key : MonoBehaviour
                 key.SetActive(false);
                 Door.key_held = true;
                 int_icon.SetActive(false);
+                ambience_player.Stop();
+                monster_roar.Play();
             }
         }
     }

@@ -28,6 +28,7 @@ public class Door : MonoBehaviour
 
     public void CloseDoor()
     {
+        close.Play();
         opened = false;
         door_closed.SetActive(true);
         door_opened.SetActive(false);
@@ -77,12 +78,10 @@ public class Door : MonoBehaviour
                 if (!opened)
                 {
                     OpenDoor();
-                    // open.play();
                 }
                 else
                 {
                     CloseDoor();
-                    // close.play();
                 }
                 isDoorUsed = true;
                 StartCoroutine(repeat());
